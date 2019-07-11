@@ -1,0 +1,6 @@
+MIGRATION:
+	start: migration:run
+	sempre que for alterar uma tablea: Cria nova migration (recomendado)
+	a menos que ainda não tenha enviado para outros dev ou deploy.
+	
+	Antes de alterar: migration:rollback   (desfazer as migrations que já "rodaram" e perde os dados)
