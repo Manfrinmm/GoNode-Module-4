@@ -3,14 +3,15 @@
 const Project = use("App/Models/Project");
 
 class ProjectController {
-  async index({}) {
+  async index({ request }) {
     // retorna todos os projetos
     //const projects = await Project.all();
 
     //retornar os relacionamentos
     const projects = await Project.query()
       .with("user")
-      .fetch();
+      .paginate(request.get().page); //pagina inicial
+    // .fetch();
     return projects;
   }
 
