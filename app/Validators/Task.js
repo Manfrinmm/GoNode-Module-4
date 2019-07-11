@@ -1,4 +1,5 @@
 "use strict";
+const Antl = use("Antl"); // lib de Internationalization
 
 class Task {
   get rules() {
@@ -7,6 +8,10 @@ class Task {
       title: "required",
       due_data: "date"
     };
+  }
+
+  get messages() {
+    return Antl.list("validation");
   }
 }
 

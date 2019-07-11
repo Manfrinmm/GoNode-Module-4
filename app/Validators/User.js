@@ -1,5 +1,7 @@
 "use strict";
 
+const Antl = use("Antl"); // lib de Internationalization
+
 class User {
   get validateAll() {
     return true; //faz com que todos campos sejam validados ao mesmo tempo
@@ -11,6 +13,10 @@ class User {
       email: "required|email|unique:users",
       password: "required|confirmed"
     };
+  }
+
+  get messages() {
+    return Antl.list("validation");
   }
 }
 

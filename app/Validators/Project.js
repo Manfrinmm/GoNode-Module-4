@@ -1,4 +1,5 @@
 "use strict";
+const Antl = use("Antl"); // lib de Internationalization
 
 class Project {
   get validateAll() {
@@ -10,6 +11,10 @@ class Project {
       title: "required",
       description: "required"
     };
+  }
+
+  get messages() {
+    return Antl.list("validation");
   }
 }
 
