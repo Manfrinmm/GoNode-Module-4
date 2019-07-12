@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 module.exports = {
   /*
@@ -16,7 +16,9 @@ module.exports = {
   | Function - Receives the current origin and should return one of the above values.
   |
   */
-  origin: false,
+  origin: true, // quais dominios permitir acessar a aplicação.
+  //false -> apenas endereços da mesma url podem acessar
+  //true -> todos endereços podem acessar
 
   /*
   |--------------------------------------------------------------------------
@@ -29,7 +31,8 @@ module.exports = {
   | Array - An array of allowed methods
   |
   */
-  methods: ['GET', 'PUT', 'PATCH', 'POST', 'DELETE'],
+  //metodos que os endereços podem acessar
+  methods: ["GET", "PUT", "PATCH", "POST", "DELETE"],
 
   /*
   |--------------------------------------------------------------------------
@@ -84,4 +87,4 @@ module.exports = {
   |
   */
   maxAge: 90
-}
+};
