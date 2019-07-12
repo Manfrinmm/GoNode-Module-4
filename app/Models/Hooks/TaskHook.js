@@ -1,7 +1,7 @@
 "use strict";
 
-const Mail = use("Mail");
-const Helpers = use("Helpers");
+const Kue = use("Kue");
+const Job = use("App/Jobs/NewTaskMail");
 
 const TaskHook = (exports = module.exports = {});
 
@@ -17,20 +17,12 @@ TaskHook.sendNewTaskMail = async taskInstance => {
 
   const { title } = taskInstance;
 
-  await Mail.send(
-    ["emails.new_task"],
-    { username, title, hasAttachment: !!file }, // !! faz a variavel virar booleano
-    message => {
-      message
-        .to(email)
-        .from("mmm123", "Adnonis|hue")
-        .subject("Nova tarefa para você");
-
-      if (file) {
-        message.attach(Helpers.tmpPath(`uploads/${file.file}`), {
-          filename: file.name
-        });
-      }
+  //Não entendi como ele identifica qual job é chamado
+  Kue.dispatch(
+    Job.key,
+    { username, email, title, file },
+    {
+      attempts: 3
     }
-  );
+  ); //disparada a chamada do job
 };

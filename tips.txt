@@ -4,3 +4,7 @@ MIGRATION:
 	a menos que ainda não tenha enviado para outros dev ou deploy.
 	
 	Antes de alterar: migration:rollback   (desfazer as migrations que já "rodaram" e perde os dados)
+
+
+redis:
+armazena apenas chave e valor
