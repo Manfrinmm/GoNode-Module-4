@@ -1,6 +1,10 @@
 "use strict";
 
+const Sentry = require("@sentry/node");
+
 const Env = use("Env");
+const Config = use("Config");
+
 const Youch = use("youch"); //formatador de erros
 const BaseExceptionHandler = use("BaseExceptionHandler");
 
@@ -51,9 +55,13 @@ class ExceptionHandler extends BaseExceptionHandler {
    * @return {void}
    */
 
-  // O que quer fazer com esse erro?
+  // Tratamento do erro
   async report(error, { request }) {
-    console.log(error);
+    console.log(Config.get("services.sentry.dns"));
+    Sentry.init({
+      dsn: Config.get("services.sentry.dns")
+    });
+    Sentry.captureException(error);
   }
 }
 
