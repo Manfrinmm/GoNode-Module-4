@@ -8,3 +8,6 @@ MIGRATION:
 
 redis:
 armazena apenas chave e valor
+
+cors:
+
